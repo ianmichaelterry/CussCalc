@@ -30,6 +30,7 @@ public class CussCalc{
 			}
 		
 		try{		          //starts a try catch
+			int lineCount=0;
 			int wordCount=-5; //counter for the number of words, this one is set to -5
 			int cussCount=0;  //counter for the number of curses
 			
@@ -100,10 +101,11 @@ public class CussCalc{
 					line=line.replace(computerColon,nothing);
 					line=line.replace(computerSemicolon,nothing);
 				
-				if(line.equals("<-- start of lyrics -->")){  //turns on a boolean when the reader gets to the lyrics
+				
+				if(lineCount<154){	
 					inSong=true;
 				}
-				if(line.equals("<-- end of lyrics -->")){   //turns off a boolean when the reader finishes the lyrics
+				if(line.equals("<!-- MxM banner -->")){   //turns off a boolean when the reader finishes the lyrics
 					inSong=false;
 					break;
 				}
@@ -274,7 +276,7 @@ slice[i].equals("Mothafuka")||slice[i].equals("mothafucka")||slice[i].equals("Mo
 					}
 				}
 						
-					
+				lineCount++;	
 				line = br.readLine();	//moves the buffered reader to the next line	
 			}
 			double cursePercent=((double)cussCount / (double)wordCount) ; //calculates the number of curse words
